@@ -490,7 +490,8 @@ span{
     font-family: 'Roboto Mono', monospace;
     font-size: 1.2rem;
     margin-bottom: 5px;
-    color: #FFC300;
+    color: #FF6B6B;
+    font-weight: 800;
     font-size: 40px; 
     text-align: center; 
     white-space: nowrap;
@@ -499,8 +500,9 @@ span{
 .L{
     font-family: 'Roboto Mono', monospace;
     font-size: 1.2rem;
+    font-weight: 800;
     margin-bottom: 5px;
-    color: #FF6B6B;
+    color: #C724B1;
     font-size: 40px; 
     text-align: center; 
     white-space: nowrap;
@@ -521,7 +523,7 @@ color: greenyellow;
 }
 .M{
     font-size: .7rem;
-    color: #FF6B6B;
+    color: #FFC300;
 }
 .DL{
     font-size: .3rem;
@@ -531,7 +533,8 @@ color: greenyellow;
     font-family: 'Roboto Mono', monospace;
     font-size: 1.2rem;
     margin-bottom: 5px;
-    color: #C724B1;
+    color: #FF6B6B;
+    font-weight: 800;
     font-size: 40px; 
     text-align: center; 
     white-space: nowrap;
@@ -552,6 +555,7 @@ color: greenyellow;
     font-family: 'Roboto Mono', monospace;
     font-size: 1.2rem;
     margin-bottom: 5px;
+    font-weight: 800;
     color: limegreen;
     font-size: 40px; 
     text-align: center; 
@@ -565,7 +569,6 @@ color: greenyellow;
     font-size: .3rem;
     color: tomato;
 }
-
 ::-webkit-scrollbar{
     width: 15px;
 }
