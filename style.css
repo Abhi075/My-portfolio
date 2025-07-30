@@ -25,6 +25,7 @@ html{
 body{
     background-color: var(--bg-color);
     color: var(--text-color);
+    
 }
 .header{
     position: fixed;
@@ -40,6 +41,126 @@ body{
     align-items: center;
     z-index: 5;
 }
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background-color: #1f2937; /* gray-800 */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+  background-color: #374151; /* gray-700 */
+  transform: rotate(180deg);
+}
+
+/* Default dark theme */
+html.dark {
+    --bg-color: #080808;
+    --second-bg-color: #131313;
+    --text-color: white;
+    --main-color: #00ff88;
+}
+
+/* Light theme */
+html:not(.dark) {
+    --bg-color: #ffffff;
+    --second-bg-color: #f8f9fa;
+    --text-color: #000000;
+    --main-color: #00cc6a;
+}
+
+/* Apply light theme styles */
+html:not(.dark) body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+html:not(.dark) .header {
+    background: rgba(255,255,255,0.3);
+}
+/* Fix heading class for light theme */
+html:not(.dark) .heading,
+html:not(.dark) h1.heading,
+html:not(.dark) h2.heading,
+html:not(.dark) h3.heading {
+    color: #000000 !important;
+}
+
+/* Also target headings by their content or section */
+html:not(.dark) #contact .heading,
+html:not(.dark) #services .heading,
+html:not(.dark) .contact-section .heading,
+html:not(.dark) .services-section .heading {
+    color: #000000 !important;
+}
+
+/* General fallback for all headings */
+html:not(.dark) h1,
+html:not(.dark) .heading,
+html:not(.dark) .timeline-date,
+html:not(.dark) h4,
+html:not(.dark) h5,
+html:not(.dark) h6 {
+    color: #000000 !important;
+}
+
+/* Fix sen1 class for light theme */
+html:not(.dark) .sen1 {
+    color: #000000 !important;
+}
+
+/* If sen1 is used on different elements */
+html:not(.dark) p.sen1,
+html:not(.dark) div.sen1,
+html:not(.dark) span.sen1,
+html:not(.dark) h1.sen1,
+html:not(.dark) h2.sen1,
+html:not(.dark) h3.sen1 {
+    color: #000000 !important;
+}
+/* Footer light theme fix */
+html:not(.dark) footer,
+html:not(.dark) .footer {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+/* Footer text elements */
+html:not(.dark) footer *,
+html:not(.dark) .footer * {
+    color: #000000 !important;
+}
+
+/* Footer links */
+html:not(.dark) footer a,
+html:not(.dark) .footer a {
+    color: #000000 !important;
+}
+
+html:not(.dark) footer a:hover,
+html:not(.dark) .footer a:hover {
+    color: var(--main-color) !important;
+}
+
+
+
+/* @media (max-width: 430px) {
+  .theme-toggle {
+    width: 2px;
+    height: 32px;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
+} */
+
 
 .logo {
     font-size: 3rem;
@@ -77,6 +198,7 @@ body{
     font-size: 3.6rem;
     color: var(--main-color);
     display: none;
+    cursor: pointer
 }
 
 
@@ -189,6 +311,10 @@ span{
     cursor: pointer;
 }
 
+html:not(.dark) .footer {
+    background-color: #ffffff !important;
+}
+
 .btn:hover{
     transform: scale(1.05);
     box-shadow: 0 0 50px var(--main-color);
@@ -216,10 +342,13 @@ span{
     font-size: 34px;
     font-weight: 600;
     min-width: 280px;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .text-animation span{
     position: relative;
+    font-family: 'Roboto Mono', monospace;
+
 }
 .text-animation span::before {
     content: "";
@@ -311,11 +440,11 @@ span{
     margin: 5rem 0;
 }
 
-@media (max-width:768px)  {
+/* @media (max-width:768px)  {
     .home{
         width: 100vh;
     }
-}
+} */
 
 /*work*/
 
@@ -327,6 +456,19 @@ span{
 .work h2{
     margin-bottom: 5rem;
 }
+#work h2::before,
+#work h2::after {
+    content: none !important;
+    display: none !important;
+}
+
+#work hr,
+#work .line, 
+#work .border-line {
+    display: none !important;
+}
+
+
 
 .timeline-items{
     max-width: 1200px;
@@ -374,34 +516,7 @@ span{
     top: 10px;
 }
 
-@media (max-width: 768px) {
 
-    .work{
-        width: 120vh;
-    }
-    .timeline-items::before {
-      left: 12px; /* Align the vertical line to the left */
-    }
-  
-    .timeline-dot {
-      left: 0px; /* Align the dot to the left edge */
-      top: 10px;
-      margin-left: 4px;
-      transform: translateX(0);
-    }
-  
-    .timeline-item {
-      padding: 0 0 0 40px !important; /* Push content to the right of the line */
-      text-align: left !important;
-    }
-  
-    .timeline-item:nth-child(even),
-    .timeline-item:nth-child(odd) {
-      padding-left: 40px !important;
-      padding-right: 0 !important;
-      text-align: left !important;
-    }
-  }
 
 .timeline-date{
     font-size: 20px;
@@ -569,6 +684,7 @@ color: greenyellow;
     font-size: .3rem;
     color: tomato;
 }
+
 ::-webkit-scrollbar{
     width: 15px;
 }
@@ -649,11 +765,11 @@ color: greenyellow;
     color: var(--bg-color);
   }
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 430px) {
     .tech-section{
         width: 100vh;
     }
-}
+} */
 
 
   /*services*/
@@ -692,6 +808,18 @@ color: greenyellow;
     padding: 2rem;
   }
   
+  #services h2::before,
+#services h2::after {
+    content: none !important;
+    display: none !important;
+}
+
+#services hr,
+#services .line, 
+#services .border-line {
+    display: none !important;
+}
+
   .service-box {
     width: 100%;
     max-width: 800px;
@@ -733,7 +861,9 @@ color: greenyellow;
     font-size: 1.6rem;
     font-weight: 600;
   }
-  @media (max-width: 768px) {
+
+  
+  /* @media (max-width: 768px) {
     .services-con {
       flex-direction: column;
     }
@@ -743,7 +873,7 @@ color: greenyellow;
         width: 100vh;
     }
   }
-
+ */
 
   /*Testimonials*/
 
@@ -766,6 +896,19 @@ color: greenyellow;
     margin-bottom: 5rem;
 
   }
+
+  #testimonials h2::before,
+#testimonials h2::after {
+    content: none !important;
+    display: none !important;
+}
+
+#testimonials hr,
+#testimonials .line, 
+#testimonials .border-line {
+    display: none !important;
+}
+
   /* .testimonial img {
     width: 250px;
     height: 250px;
@@ -828,64 +971,6 @@ color: greenyellow;
 .testimonial-item p{
     font-size: 1.3rem;
 }
-@media (max-width: 768px) {
-    .testimonials{
-        width: 120vh;
-    }
-
-    .wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px;
-      gap: 20px;
-    }
-  
-    .testimonial-item {
-      width: 95%;              /* Increased from 90% */
-      max-width: 480px;        /* Increased from 400px */
-      background: #000;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 0 25px rgba(0, 255, 128, 0.4);
-      text-align: center;
-    }
-  
-    .testimonial-item img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-      border: 2px solid #00ffcc;
-    }
-  
-    .testimonial-item h2 {
-      font-size: 20px;
-      margin: 10px 0;
-    }
-  
-    .testimonial-item .rating {
-      margin: 10px 0;
-      color: gold;
-    }
-  
-    .testimonial-item p {
-      font-size: 14px;
-      color: #ccc;
-      line-height: 1.5;
-    }
-  
-    .linkedin-icon {
-      margin: 10px 0;
-    }
-  
-    .linkedin-icon a {
-      color: #0e76a8;
-      font-size: 20px;
-    }
-  }
-  
 
 #star{
     font-size: 2rem;
@@ -921,6 +1006,19 @@ color: greenyellow;
     margin-bottom: 3rem;
     color: white;
 }
+
+#contact h2::before,
+#contact h2::after {
+    content: none !important;
+    display: none !important;
+}
+
+#contact hr,
+#contact .line, 
+#contact .border-line {
+    display: none !important;
+}
+
 
 .contact-form{
     display: flex;
@@ -1027,7 +1125,7 @@ color: greenyellow;
     color: white;
 }
 
-@media(max-width:1285px){
+/* @media(max-width:1285px){
     html{
         font-size: 55%;
     }
@@ -1036,84 +1134,516 @@ color: greenyellow;
         grid-template-columns: repeat(2,1fr);
         margin: 0 5rem;
     }
+} */
+
+
+/* Mobile-specific fixes - add this file after your main CSS */
+
+/* Mobile-specific fixes - add this file after your main CSS */
+
+/* Small screens (phones up to 430px) */
+@media (max-width: 430px) {
+  /* Fix header for mobile */
+  .header {
+    padding: 1.5rem 4%;
+  }
+  
+  #menu-icon {
+    display: block;
+  }
+  
+  /* Make the navbar work on mobile */
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: -100%;
+    width: 100%;
+    padding: 1rem 4%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 99;
+    transition: left 0.3s ease;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .navbar.active {
+    left: 0;
+  }
+  
+  .navbar a {
+    display: block;
+    font-size: 1.8rem;
+    margin: 1rem 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Fix home section layout */
+  .home {
+    flex-direction: column-reverse;
+    padding: 0 2rem;
+    margin-top: 5rem;
+    text-align: center;
+  }
+  
+  .home-content {
+    margin-left: 0;
+    padding-top: 2rem;
+  }
+  
+  .home-img img {
+    width: 25rem;
+    height: 25rem;
+  }
+  
+  .home-content h1 {
+    font-size: 4.5rem;
+  }
+  
+  .social-icons {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .btn-group {
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  /* Fix timeline for mobile - FIXED ALIGNMENT ISSUE */
+  .timeline-items::before {
+    left: 7px;  /* Adjusted to align with center of dot */
+    width: 4px;
+  }
+  
+  .timeline-dot {
+    height: 18px;
+    width: 18px;
+    left: 0;
+    top: 10px;
+    transform: translateX(0);
+  }
+  
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    padding: 0 0 0 4rem !important;
+    text-align: left !important;
+  }
+  
+  /* Reset timeline image and text styles */
+  .timeline-image {
+    position: relative;
+    height: auto;
+    min-height: 20rem;
+    overflow: hidden;
+  }
+  
+  .timeline-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Fix image text overlay - show on hover only */
+  .image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    pointer-events: none;
+  }
+  
+  /* Always show text on mobile for better UX */
+  .timeline-item:hover .image-text,
+  .timeline-item:active .image-text,
+  .timeline-item:focus .image-text {
+    opacity: 1;
+  }
+  
+  /* Tap to reveal effect for mobile */
+  .timeline-image:after {
+    content: "Tap to view details";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+  }
+  
+  .timeline-item:hover .timeline-image:after,
+  .timeline-item:active .timeline-image:after,
+  .timeline-item:focus .timeline-image:after {
+    display: none;
+  }
+  
+  /* Fix title text size */
+  .image-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    word-wrap: break-word;
+  }
+  
+  /* Fix class-specific title styles */
+  .image-text h3.L, 
+  .image-text h3.d1,
+  .image-text h3.TA, 
+  .image-text h3.MRS {
+    font-size: 1.8rem;
+    white-space: normal;
+  }
+  
+  /* Fix tag spans */
+  .image-text span {
+    display: inline-block;
+    margin: 0.3rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+  }
+  
+  /* Make button more visible */
+  .learn-more-btn {
+    margin-top: 0.8rem;
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--main-color);
+    color: #000;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  /* Fix testimonials for mobile */
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .testimonial-item {
+    min-height: auto;
+    max-width: 100%;
+  }
+  
+  /* Fix services for mobile */
+  .services-con {
+    flex-direction: column;
+  }
+  
+  /* Fix contact form for mobile */
+  .contact {
+    margin-left: 0;
+    padding: 5rem 2rem;
+  }
+  
+  .input {
+    flex-direction: column;
+  }
+  
+  .contact form .btn {
+    position: static;
+    margin: 2rem auto;
+    display: block;
+  }
+}
+
+/* Medium screens (phones and small tablets, 431px to 768px) */
+@media (min-width: 431px) and (max-width: 768px) {
+  .header {
+    padding: 2rem 5%;
+  }
+  
+  #menu-icon {
+    display: block;
+  }
+  
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: -100%;
+    width: 100%;
+    padding: 1.5rem 5%;
+    background: rgba(0, 0, 0, 0.9);
+    transition: left 0.3s ease;
+    flex-direction: column;
+  }
+  
+  .navbar.active {
+    left: 0;
+  }
+  
+  .navbar a {
+    margin: 1.5rem 0;
+    display: block;
+    text-align: center;
+  }
+  
+  .home {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  
+  .home-content {
+    margin-left: 0;
+  }
+  
+  /* Fix timeline for mobile - FIXED ALIGNMENT ISSUE */
+  .timeline-items::before {
+    left: 7px;
+    width: 4px;
+  }
+  
+  .timeline-dot {
+    height: 18px;
+    width: 18px;
+    left: 0;
+    top: 10px;
+    transform: translateX(0);
+  }
+  
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    padding: 0 0 0 4rem !important;
+    text-align: left !important;
+  }
+  
+  /* Fix image text similar to small screens */
+  .timeline-image:after {
+    content: "Tap to view details";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+  }
+  
+  .image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .timeline-item:hover .image-text,
+  .timeline-item:active .image-text,
+  .timeline-item:focus .image-text {
+    opacity: 1;
+  }
+  
+  .services-con {
+    flex-direction: column;
+  }
+  
+  .contact {
+    margin-left: 0;
+    padding: 5rem 2rem;
+  }
+  
+  .contact form .btn {
+    left: auto;
+    position: static;
+    margin: 2rem auto;
+    display: block;
+  }
+}
+
+/* Larger tablets and small laptops */
+@media (min-width: 769px) and (max-width: 991px) {
+  .header {
+    padding: 2rem 6%;
+  }
+  
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Fix timeline for tablets */
+  .timeline-items::before {
+    left: 7px;
+    width: 4px;
+  }
+  
+  .timeline-dot {
+    height: 18px;
+    width: 18px;
+    left: 0;
+    top: 10px;
+    transform: translateX(0);
+  }
+  
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    padding: 0 0 0 4rem !important;
+    text-align: left !important;
+  }
+}
+
+/* Fix specific issue with image-text opacity on all screen sizes */
+@media (max-width: 991px) {
+  .timeline-image img {
+    opacity: 1 !important;
+  }
+  
+  /* Make hover state work on touch for all devices */
+  .timeline-item .image-text {
+    opacity: 0;
+  }
+  
+  .timeline-image {
+    cursor: pointer;
+  }
+  
+  /* States to trigger text display */
+  .timeline-item:hover .image-text,
+  .timeline-item:active .image-text,
+  .timeline-item:focus .image-text,
+  .timeline-item.touched .image-text {
+    opacity: 1;
+  }
+}
+  /* Fix all section headings globally on mobile - ADDED */
+  .heading {
+    display: block;
+    width: 100% !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+  
+  .testimonials-box {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  /* Minimal CSS fix to make Learn More buttons work */
+.image-text {
+  pointer-events: none; /* Makes the overlay "click-through" */
+}
+
+.learn-more-btn {
+  pointer-events: auto; /* Makes only the button clickable */
+  position: relative;
+  z-index: 10; /* Ensures button stays on top */
+}
+
+a.learn-more-btn {
+  display: inline-block; /* Ensures proper link behavior */
+}
+.tags-container {
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Specific fixes for testimonials on tablets (iPad) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* Improve testimonial grid layout for tablets */
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Change to 2 columns instead of 3 */
+    gap: 2rem;
+    padding: 1rem;
+  }
+  
+  /* Make testimonial cards larger and more readable */
+  .testimonial-item {
+    min-height: auto;
+    max-width: 100%;
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Improve image size on tablets */
+  .testimonial-item img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  /* Improve text readability */
+  .testimonial-item p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin: 1.5rem 0;
+  }
+  
+  .testimonial-item h2 {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+  
+  /* Better star rating display */
+  #star {
+    font-size: 1.6rem;
+    margin: 0.2rem;
+  }
+  
+  /* Specifically target iPad Pro */
+  @media only screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
+    .wrapper {
+      grid-template-columns: repeat(2, 1fr); /* Force 2 columns on iPad Pro */
+    }
+    
+    /* Add more breathing room */
+    .testimonials {
+      padding: 6rem 4% 4rem;
+    }
+    
+    .testimonial-item {
+      min-height: 450px; /* Set consistent height */
+    }
+  }
+  
+  /* Fix for specific iPad models in landscape */
+  @media only screen and (min-width: 1000px) and (max-width: 1366px) and (orientation: landscape) {
+    .wrapper {
+      grid-template-columns: repeat(3, 1fr); /* Return to 3 columns but with better sizing */
+      gap: 1.5rem;
+    }
+    
+    .testimonial-item {
+      padding: 2.5rem 1.5rem;
+    }
+  }
 }
 
 
-
-@media(max-width:991px){
-    header{
-        padding:2rem 3%;
-    }
-    section{
-        padding: 10rem 3% 2rem;
-    }
-    .timeline-item::before{
-        left: 7px;
-    }
-    .timeline-item:nth-child(odd)
-    .timeline-item::nth-child(even){
-        padding: 37px;
-    }
-    .timeline-dot{
-        left: 0;
-    }
-    .services{
-        padding-bottom: 7rem;
-    }
-    .testimonial .wrapper{
-        grid-template-columns: repeat(1,1fr);
-    }
-    .contact form{
-        flex-direction: column;
-        width: 100vh;
-    }
-
-    .footer{
-        padding: 2rem 3%;
-        width: 120vh;
-    }
+/* Fix only for the mobile menu background in light theme */
+html:not(.dark) .navbar {
+    background: rgba(255, 255, 255, 0.9) !important;
 }
 
-@media(max-width:895px){
-    #menu-icon{
-        display: block ;
-    }
-    .navbar {
-        position: absolute;
-        top: 100%;
-        right: -100%; /* hides it off-screen */
-        background: #111;
-        width: 50%;
-        height: 100vh;
-        padding: 2rem;
-        transition: right 0.3s ease;
-        display: flex;
-        flex-direction: column;
-      }
-      
-      .navbar.active {
-        right: 0; /* slides it into view */
-      }
-    .navbar a{
-        display: block;
-        font-size: 2rem;
-        margin: 3rem 0;
-        color: white;
-    }
-
-    .home{
-        flex-direction: column-reverse;
-        margin: 5rem 4rem;
-    }
-    .home-content h3{
-        font-size: 2.6rem;
-    }
-    .home-content h1{
-        font-size: 8rem;
-        margin-top: 3rem;
-    }
-    .home-content p{
-        max-width: 600px;
-    }
+html:not(.dark) .navbar a {
+    color: #000000 !important;
 }
+
+html:not(.dark) .navbar a:hover,
+html:not(.dark) .navbar a.active {
+    color: var(--main-color) !important;
+}
+
+
+/* ----------------------------------------------------------------------------------- */
 
