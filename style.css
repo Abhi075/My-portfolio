@@ -1468,7 +1468,7 @@ color: greenyellow;
     display: block;
   }
 }
-@media (max-width: 430px) {
+@media (max-width: 430px){
   body {
     margin: 0; /* Remove default body margin */
     padding: 0;
@@ -1476,8 +1476,18 @@ color: greenyellow;
     overflow-x: hidden;
   }
 
-  /* Target the main container. 
-     Replace '.main-container' with the actual class or element if it's different (e.g. section, .container, etc.) */
+}
+
+ /* Adjustments to lower the profile image on mobile */
+@media (max-width: 430px) {
+  /* Full width container fixes (keeping your previous code) */
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+
   .main-container, 
   section, 
   .work, 
@@ -1495,36 +1505,30 @@ color: greenyellow;
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+
+  /* NEW CHANGES - Lower the profile image */
+  .home-img {
+    margin-top: 5rem !important; /* Push image down further */
+    padding-top: 1.5rem;
+  }
+
+  /* Adjust spacing after the image */
+  .home-content {
+    margin-top: 2rem;
+  }
 }
 
-/* Larger tablets and small laptops */
+/* Also apply similar but slightly different adjustments for tablet sizes */
+@media (min-width: 431px) and (max-width: 768px) {
+  .home-img {
+    margin-top: 4rem !important;
+  }
+}
+
+/* For larger tablets */
 @media (min-width: 769px) and (max-width: 991px) {
-  .header {
-    padding: 2rem 6%;
-  }
-  
-  .wrapper {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  /* Fix timeline for tablets */
-  .timeline-items::before {
-    left: 7px;
-    width: 4px;
-  }
-  
-  .timeline-dot {
-    height: 18px;
-    width: 18px;
-    left: 0;
-    top: 10px;
-    transform: translateX(0);
-  }
-  
-  .timeline-item:nth-child(odd),
-  .timeline-item:nth-child(even) {
-    padding: 0 0 0 4rem !important;
-    text-align: left !important;
+  .home-img {
+    margin-top: 3rem !important;
   }
 }
 
